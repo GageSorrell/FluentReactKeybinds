@@ -1,0 +1,16 @@
+/* File:      RenderComponent.ts.Template
+ * Author:    Gage Sorrell <gage@sorrell.sh>
+ * Copyright: (c) 2023 Gage Sorrell
+ * License:   MIT
+ */
+
+import { ReactElement } from "react";
+import { type SComponent } from "./";
+
+export const RenderComponent = (State: SComponent): ReactElement =>
+{
+    return (
+        <div>
+        </div>
+    );
+};

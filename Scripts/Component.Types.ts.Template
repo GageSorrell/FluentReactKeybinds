@@ -1,0 +1,9 @@
+/* File:      Component.Types.ts.Template
+ * Author:    Gage Sorrell <gage@sorrell.sh>
+ * Copyright: (c) 2023 Gage Sorrell
+ * License:   MIT
+ */
+
+export type PComponent = object;
+
+export type SComponent = PComponent & FStyledState & object;

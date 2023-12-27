@@ -1,0 +1,13 @@
+/* File:      Component.ts.Template
+ * Author:    Gage Sorrell <gage@sorrell.sh>
+ * Copyright: (c) 2023 Gage Sorrell
+ * License:   MIT
+ */
+
+import { type PComponent } from "./";
+import { ReactElement } from "react";
+
+export const Component = (Props: PComponent): ReactElement =>
+{
+    return RenderSimpleComponent(Props, UseComponent, UseComponentStyles, RenderComponent);
+};

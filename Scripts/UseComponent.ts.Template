@@ -1,0 +1,12 @@
+/* File:      UseComponent.Template.ts
+ * Author:    Gage Sorrell <gage@sorrell.sh>
+ * Copyright: (c) 2023 Gage Sorrell
+ * License:   MIT
+ */
+
+import { type PComponent } from "./";
+
+export const UseComponent = (Props: PComponent): TStateUnstyled<SComponent> =>
+{
+
+};
