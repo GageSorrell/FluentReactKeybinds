@@ -10,7 +10,9 @@ import { type FStyledState } from "../../Utility";
 
 export type PKeySequenceRecorder = Pick<PKey, "CornerDirection"> &
 {
-    OnChange: (Keys: Array<FDomKeyCode>) => void;
+    OnChange?: (Keys: Array<FDomKeyCode>) => void;
+    OnExcludedKeyPressed?: (Key: FDomKeyCode) => void;
+    ExclusionList?: Array<FDomKeyCode>;
 };
 
 export type FKeySequence = Array<FDomKeyCode>;

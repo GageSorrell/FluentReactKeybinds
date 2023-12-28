@@ -25,7 +25,8 @@ const UseStylesCommon: FKeyStyles = makeStyles({
         display: "flex",
         fontFamily: "Segoe UI",
         justifyContent: "center",
-        position: "relative"
+        position: "relative",
+        userSelect: "none"
     },
     ShortCaps:
     {
@@ -47,8 +48,7 @@ const UseStylesFull: FKeyStyles = makeStyles({
         boxShadow: tokens.shadow4,
         fontSize: "1rem",
         height: "3rem",
-        minWidth: "1rem",
-        width: "3rem",
+        minWidth: "3rem",
         paddingLeft: "1rem",
         paddingRight: "1rem"
     },
@@ -84,13 +84,14 @@ const UseStylesInline: FKeyStyles = makeStyles({
     Root:
     {
         ...shorthands.borderRadius(tokens.borderRadiusMedium),
-        ...shorthands.borderColor(tokens.colorNeutralBackground3Pressed),
+        ...shorthands.borderColor(tokens.colorNeutralForeground3Selected),
         ...shorthands.borderStyle("solid"),
         ...shorthands.borderWidth("1px"),
         backgroundColor: "#00000000",
-        color: tokens.colorNeutralBackground3Pressed,
+        color: tokens.colorNeutralForeground3Selected,
         display: "inline-flex",
-        fontSize: "1rem",
+        fontSize: "0.8rem",
+        fontWeight: "400",
         height: "1.5rem",
         minWidth: "0.5rem",
         marginLeft: "0.25rem",
@@ -100,7 +101,8 @@ const UseStylesInline: FKeyStyles = makeStyles({
     },
     ShortCaps:
     {
-        fontSize: "0.5rem"
+        fontSize: "0.5rem",
+        fontWeight: "400"
     },
     StringContainer: { }
 });

@@ -9,18 +9,20 @@ import { ReactElement } from "react";
 import { isValidElement } from "react";
 
 const RenderString = (
-    { ClassNames }: Pick<SKey, "ClassNames">,
+    { ClassNames, Display }: Pick<SKey, "ClassNames" | "Display">,
     String: string): ReactElement | undefined =>
 {
     const fontSize: string = String.length > 1
         ? "1rem"
-        : "1.25rem";
+        : Display !== "Inline"
+            ? "1.25rem"
+            : "0.9rem";
 
     return (
         <span
             className={ ClassNames?.StringContainer }
             key={ Math.random().toString() }
-            style={ { fontSize, display: "block" } }>
+            style={ { boxSizing: "border-box", fontSize, display: "block", whiteSpace: "nowrap" } }>
             { String }
         </span>
     );
@@ -31,13 +33,22 @@ export const RenderKey = ({
     ClassNames,
     Color,
     CornerDirection,
+    Display,
     Representation,
     style }: SKey): ReactElement =>
 {
     const OutRep: Array<FKeyRepresentation> = [ ...Representation ];
     console.log(`OutRep is`, OutRep);
     let DirectionText: "L" | "R" | undefined = undefined;
-    if (CornerDirection && (OutRep.length > 1 || (typeof OutRep[0] === "string" && OutRep[0].length > 1)))
+    const ShouldFormatCorner: boolean | undefined = CornerDirection &&
+        (
+            OutRep.length > 1 ||
+            (
+                typeof OutRep[0] === "string" &&
+                OutRep[0].length > 1
+            )
+        );
+    if (ShouldFormatCorner)
     {
         const DirectionKeyNotSplit = (): string | undefined =>
         {
@@ -104,7 +115,7 @@ export const RenderKey = ({
                     }
                     else if (typeof Element === "string")
                     {
-                        ReturnElement = RenderString({ ClassNames }, Element);
+                        ReturnElement = RenderString({ ClassNames, Display }, Element);
 
                         // if (Element.startsWith("data:"))
                         // {
@@ -132,7 +143,14 @@ export const RenderKey = ({
                         return (
                             <span
                                 key={ Math.random().toString() }
-                                style={ { display: "block", position: "absolute", bottom: 0, left: "3px", fontSize: "0.667rem", color: "#FFFFFF" } }>
+                                style={ {
+                                    display: "block",
+                                    position: "absolute",
+                                    bottom: 0,
+                                    left: "3px",
+                                    fontSize: "0.667rem",
+                                    color: "#FFFFFF"
+                                } }>
                                 { DirectionText }
                             </span>
                         );

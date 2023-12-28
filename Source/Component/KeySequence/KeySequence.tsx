@@ -4,7 +4,10 @@
  * License:   MIT
  */
 
-import { type PKeySequence, UseKeySequenceStyles, RenderKeySequence } from "./";
+import {
+    type PKeySequence,
+    RenderKeySequence,
+    UseKeySequenceStyles } from "./";
 import { ComponentFactory } from "../../Utility";
 import { ReactElement } from "react";
 

@@ -33,10 +33,7 @@ export const RenderKeybindDialog =
           <DialogBody>
             <DialogTitle>Dialog title</DialogTitle>
             <DialogContent>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam
-              exercitationem cumque repellendus eaque est dolor eius expedita
-              nulla ullam? Tenetur reprehenderit aut voluptatum impedit
-              voluptates in natus iure cumque eaque?
+                Foo bar
             </DialogContent>
 
             <DialogActions>

@@ -72,15 +72,17 @@ import {
     TableSimpleFilled,
     TextAsteriskFilled,
     TextAsteriskRegular } from "@fluentui/react-icons";
-import { FKeyRepresentation, type FDomKeyCode, type SKey } from "./Key.Types";
-import { type FVkUnstyled, type VK, VkToDom } from "../../Utility/Vk";
+import {
+    type FDomKeyCode,
+    type FKeyRepresentation,
+    type SKey } from "./Key.Types";
+import {
+    type FVkUnstyled,
+    type VK,
+    VkToDom } from "../../Utility/Vk";
+import { GetInverse, type TStateUnstyled } from "../../Utility";
 import { type PKey } from ".";
 import { type ReactElement } from "react";
-import { GetInverse, type TStateUnstyled } from "../../Utility";
-
-/* @TODO Add option to hide shift when there is a following character that has a "capitalized" counterpart */
-/* @TODO Add option to re-order Alt, Shift, and Control keys to be in standard order. */
-/* @TODO Support for Mac, Linux? */
 
 type FKeyIconKey =
     | "Add"

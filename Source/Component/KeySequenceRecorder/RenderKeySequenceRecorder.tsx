@@ -19,7 +19,10 @@ export const RenderKeySequenceRecorder =
     }: SKeySequenceRecorder): ReactElement =>
 {
     return (
-        <div { ...{ onBlur, onKeyDown, onKeyUp } } tabIndex={ 0 } className={ ClassNames?.Root }>
+        <div
+            className={ ClassNames?.Root }
+            { ...{ onBlur, onKeyDown, onKeyUp } }
+            tabIndex={ 0 }>
             <KeySequence
                 { ...{
                     CornerDirection,
