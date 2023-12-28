@@ -17,12 +17,12 @@ const RenderString = (
         : "1.25rem";
 
     return (
-        <div
+        <span
             className={ ClassNames?.StringContainer }
             key={ Math.random().toString() }
-            style={ { fontSize } }>
+            style={ { fontSize, display: "block" } }>
             { String }
-        </div>
+        </span>
     );
 };
 
@@ -130,11 +130,11 @@ export const RenderKey = ({
                     {
                         console.log(`Rendering Corner Text ${DirectionText}`);
                         return (
-                            <div
+                            <span
                                 key={ Math.random().toString() }
-                                style={ { position: "absolute", bottom: 0, left: "3px", fontSize: "0.667rem", color: "#FFFFFF" } }>
+                                style={ { display: "block", position: "absolute", bottom: 0, left: "3px", fontSize: "0.667rem", color: "#FFFFFF" } }>
                                 { DirectionText }
-                            </div>
+                            </span>
                         );
                     }
 

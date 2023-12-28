@@ -375,7 +375,7 @@ export const UseKey = ({ CornerDirection, Display, Key, style }: PKey): TStateUn
     }
 
     return {
-        CornerDirection,
+        CornerDirection: Display !== "Inline" && CornerDirection,
         Display,
         Representation,
         style
