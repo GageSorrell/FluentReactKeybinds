@@ -1,5 +1,5 @@
 /* File:      KeySequenceRecorder.ts
- * Author:    Gage Sorrell <gage@sorrell.sh>
+ * Author:    Gage Sorrell <gsorrell@purdue.edu>
  * Copyright: (c) 2023 Gage Sorrell
  * License:   MIT
  */
@@ -7,7 +7,7 @@
 import {
     type PKeySequenceRecorder,
     RenderKeySequenceRecorder,
-    UseKeySequenceRecorder,
+    UseKeySequenceRecorder, 
     UseKeySequenceRecorderStyles } from "./";
 import { ComponentFactory } from "../../Utility";
 import { ReactElement } from "react";

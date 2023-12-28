@@ -1,5 +1,5 @@
 /* File:      Utility.Types.ts
- * Author:    Gage Sorrell <gage@sorrell.sh>
+ * Author:    Gage Sorrell <gsorrell@purdue.edu>
  * Copyright: (c) 2023 Gage Sorrell
  * License:   MIT
  */
@@ -19,7 +19,7 @@ export type TStyles<T extends string> = () => { [ Index in T ]: string };
 
 export type FStylable =
 {
-    style: CSSProperties;
+    style?: CSSProperties;
 };
 
 export type TRef<T> =

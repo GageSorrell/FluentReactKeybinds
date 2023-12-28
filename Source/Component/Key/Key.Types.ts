@@ -1,5 +1,5 @@
 /* File:      Key.Types.ts
- * Author:    Gage Sorrell <gage@sorrell.sh>
+ * Author:    Gage Sorrell <gsorrell@purdue.edu>
  * Copyright: (c) 2023 Gage Sorrell
  * License:   MIT
  */
@@ -150,11 +150,21 @@ export type FDomKeyCode =
     | "MetaRight"
     | "MediaSelect";
 
-export type PKey = FStylable & { Key: FDomKeyCode };
+export type FKeyDisplay =
+    | "Mini"
+    | "Inline"
+    | "Full";
+
+export type PKey = FStylable &
+{
+    BackgroundColor?: string;
+    Color?: string;
+    CornerDirection?: boolean;
+    Display?: FKeyDisplay;
+    Key: FDomKeyCode;
+};
 
 export type FKeyClassNames =
-    | "FluentIcon"
-    | "Image"
     | "StringContainer"
     | "Root";
 
@@ -162,7 +172,10 @@ export type FKeyStyles = TStyles<FKeyClassNames>;
 
 export type FKeyRepresentation = string | ReactElement;
 
-export type SKey = FStyledState &
-{
-    Representation: Array<FKeyRepresentation>;
-};
+export type SKey =
+    FStylable &
+    FStyledState &
+    Pick<PKey, "CornerDirection" | "Color" | "BackgroundColor" | "Display"> &
+    {
+        Representation: Array<FKeyRepresentation>;
+    };

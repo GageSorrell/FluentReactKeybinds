@@ -1,4 +1,4 @@
-/* File:      KeySequenceRecorder.Types.ts
+/* File:      KeybindDialog.Types.ts
  * Author:    Gage Sorrell <gsorrell@purdue.edu>
  * Copyright: (c) 2023 Gage Sorrell
  * License:   MIT
@@ -8,14 +8,14 @@ import { type FDomKeyCode, type PKey } from "../Key/Key.Types";
 import { type FocusEvent, type KeyboardEvent } from "react";
 import { type FStyledState } from "../../Utility";
 
-export type PKeySequenceRecorder = Pick<PKey, "CornerDirection"> &
+export type PKeybindDialog = Pick<PKey, "CornerDirection"> &
 {
     OnChange: (Keys: Array<FDomKeyCode>) => void;
 };
 
 export type FKeySequence = Array<FDomKeyCode>;
 
-export type SKeySequenceRecorder = PKeySequenceRecorder & FStyledState &
+export type SKeybindDialog = PKeybindDialog & FStyledState &
 {
     Keys: FKeySequence;
     onBlur: (Event: FocusEvent) => void;

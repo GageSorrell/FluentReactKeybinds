@@ -1,14 +1,14 @@
 /* File:      Utility.ts
- * Author:    Gage Sorrell <gage@sorrell.sh>
+ * Author:    Gage Sorrell <gsorrell@purdue.edu>
  * Copyright: (c) 2023 Gage Sorrell
  * License:   MIT
  */
 
 import {
-    TRef,
     type FComponentFactory,
     type FStyledState,
     type TComponentRenderFunction,
+    type TRef,
     type TStateUnstyled,
     type TStyledProps } from "./Utility.Types";
 import { ReactElement } from "react";
@@ -231,6 +231,104 @@ export const MakeRef = <T>(Input: T): TRef<T> =>
     };
 };
 
+export interface IEquivalenceRelation<T>
+{
+    Equals: (Other: T) => boolean;
+}
+
+export const HasEquivalenceRelation =
+    <T>(Input: unknown): Input is IEquivalenceRelation<T> =>
+{
+    const CastInput: IEquivalenceRelation<T> = Input as IEquivalenceRelation<T>;
+    return CastInput.Equals !== undefined && typeof CastInput.Equals === "function";
+};
+
+export const IsSubset =
+    <T>(
+        A: Set<T>,
+        B: Set<T>,
+        ProperRef?: TRef<boolean>,
+        EquivalenceFunction?: (AElem: T, BElem: T) => boolean): boolean =>
+{
+    let FoundAtLeastOneElement: boolean = false;
+    let FoundAllElements: boolean = true;
+
+    A.forEach((AElement: T): void =>
+    {
+        let FoundMatch: boolean = false;
+
+        B.forEach((BElement: T): void =>
+        {
+            if (FoundMatch)
+            {
+                return;
+            }
+            else
+            {
+                if (EquivalenceFunction !== undefined)
+                {
+                    FoundMatch = EquivalenceFunction(AElement, BElement);
+                }
+                else if (HasEquivalenceRelation(AElement))
+                {
+                    FoundMatch = AElement.Equals(BElement);
+                }
+                else
+                {
+                    FoundMatch = AElement === BElement;
+                }
+            }
+        });
+
+        if (FoundMatch)
+        {
+            FoundAtLeastOneElement = true;
+        }
+        else
+        {
+            FoundAllElements = false;
+        }
+    });
+
+    if (ProperRef)
+    {
+        ProperRef.Ref = FoundAllElements;
+    }
+    
+    return FoundAtLeastOneElement;
+};
+
+/**
+ * Returns whether two sets are equal by checking to see
+ * if the sets are subsets of each other.
+ * 
+ * If the elements in A implement `IEquivalenceRelation`,
+ * then the `Equals` function of the elements in `A` will
+ * be used to check for equivalence.
+ * 
+ * Note that if you use the `IEquivalenceRelation` interface,
+ * but define a relation that isn't symmetric, then the result
+ * of this function might change based on which set you pass as
+ * `A`, and which set you pass as `B`.
+ * 
+ * @param A The first set to be compared.
+ * @param B The second set to be compared.
+ * @param EquivalenceFunction (Optional) The function that defines equivalency.
+ * @returns Whether the two sets are equal.
+ */
+export const SetsEqual =
+    <T>(
+        A: Set<T>,
+        B: Set<T>,
+        EquivalenceFunction?: (A: T, B: T) => boolean): boolean =>
+{
+    const ProperRef: TRef<boolean> = MakeRef<boolean>(false);
+
+    IsSubset(A, B, ProperRef, EquivalenceFunction);
+
+    return ProperRef.Ref;
+};
+
 export const GetInverse = <T extends string | symbol | number, U extends string | symbol | number>(InObject: Record<T, U>, IsInjectiveRef?: TRef<boolean>): Record<U, T> =>
 {
     const OutObject: Partial<Record<U, T>> = { };
@@ -255,4 +353,144 @@ export const GetInverse = <T extends string | symbol | number, U extends string 
     }
 
     return OutObject as Record<U, T>;
+};
+
+/**
+ * The existential quantifier "there exists" (∃) for any `Iterable`.
+ * 
+ * $FirstMatch$ is guaranteed to be defined iff the function returns `true`.
+ * 
+ * @param Iterable The iterable that is considered.
+ * @param Predicate The predicate for which we check.
+ * @param $FirstMatch$ (Optional) If found, the `Item` that satisfies the `Predicate`.
+ * @returns Whether there exists at least one `Item` in `Iterable` that satisfies the `Predicate`.
+ */
+export const ThereExists = <T>(
+    Iterable: Iterable<T>,
+    Predicate: (Item: T) => boolean,
+    $FirstMatch$?: TRef<T | undefined>): boolean =>
+{
+    let FoundMatch: boolean = false;
+    for (const Item of Iterable)
+    {
+        if (FoundMatch)
+        {
+            break;
+        }
+        else if (Predicate(Item))
+        {
+            FoundMatch = true;
+
+            if ($FirstMatch$ !== undefined)
+            {
+                $FirstMatch$.Ref = Item;
+            }
+        }
+    }
+    
+    return FoundMatch;
+};
+
+/**
+ * The existential quantifier "for all" () implemented for any `Iterable`.
+ * 
+ * $FirstMismatch$ is guaranteed to be defined iff the function returns `false`.
+ * 
+ * @param Iterable The iterable that is considered.
+ * @param Predicate The predicate for which we check.
+ * @param $FirstMismatch$ (Optional) If found, the first `Item` that does not satisfy `Predicate`.
+ * @returns Whether the `Predicate` holds for all `Item`s in the `Iterable`.
+ */
+export const ForAll = <T>(
+    Iterable: Iterable<T>,
+    Predicate: (Item: T) => boolean,
+    $FirstMismatch$?: TRef<T | undefined>): boolean =>
+{
+    let FoundMismatch = false;
+    
+    for (const Item of Iterable)
+    {
+        if (FoundMismatch)
+        {
+            break;
+        }
+        else if (!Predicate(Item))
+        {
+            FoundMismatch = true;
+
+            if ($FirstMismatch$ !== undefined)
+            {
+                $FirstMismatch$.Ref = Item;
+            }
+        }
+    }
+
+    return !FoundMismatch;
+};
+
+export const NO_ERROR: FErrorNone = "NO_ERROR";
+
+export type FErrorNone = "NO_ERROR";
+
+export const MakeErrorRef = (): TRef<string> =>
+{
+    return MakeRef<string>(NO_ERROR);
+};
+
+/**
+ * Remove the first instance of an `Element` from `InArray`.
+ * This does not mutate `InArray`.
+ * 
+ * If an `EquivalenceFunction` is not provided, `Element` is
+ * checked to see if it implements `IEquivalenceRelation`, then
+ * calls its `Equals` function.  Otherwise, `Array#indexOf` is used instead.
+ * 
+ * @param InArray The array to search.
+ * @param Element The element to remove.
+ * @param EquivalenceFunction (Optional) The function that defines equivalence.
+ * @param $Error$ (Optional) A ref to a string that describes the error, if one occurs.
+ * @returns A copy of `InArray`, with the first instance of `Element` removed, or
+ * the empty array if `Element` was not found.
+ */
+export const RemoveElement = <T>(
+    InArray: Array<T>,
+    Element: T,
+    EquivalenceFunction?: (Lhs: T, Rhs: T) => boolean,
+    $Error$?: TRef<string>): Array<T> =>
+{
+    let IndexToRemove: number = -1;
+
+    if (EquivalenceFunction)
+    {
+        const $Match$: TRef<T | undefined> = MakeRef<T | undefined>(undefined);
+        if (ThereExists(InArray, (Other: T) => EquivalenceFunction(Element, Other), $Match$))
+        {
+            IndexToRemove = InArray.indexOf($Match$.Ref as T);
+        }
+    }
+    else if (HasEquivalenceRelation(Element))
+    {
+        const $Match$: TRef<T | undefined> = MakeRef<T | undefined>(undefined);
+        if (ThereExists(InArray, (Other: T) => Element.Equals(Other), $Match$))
+        {
+            IndexToRemove = InArray.indexOf($Match$.Ref as T);
+        }
+    }
+    else
+    {
+        IndexToRemove = InArray.indexOf(Element);
+    }
+
+    if (IndexToRemove === -1 && $Error$ !== undefined)
+    {
+        $Error$.Ref = "RemoveElement was called, but the given Element was not found.";
+
+        return [ ];
+    }
+    else
+    {
+        const OutArray: Array<T> = [ ...InArray ];
+        OutArray.splice(IndexToRemove, 1);
+        return OutArray;
+    }
 };

@@ -1,33 +1,101 @@
 /* File:      RenderKey.ts
- * Author:    Gage Sorrell <gage@sorrell.sh>
+ * Author:    Gage Sorrell <gsorrell@purdue.edu>
  * Copyright: (c) 2023 Gage Sorrell
  * License:   MIT
  */
 
+import { type FKeyRepresentation, type SKey } from "./";
 import { ReactElement } from "react";
-import { FKeyRepresentation, type SKey } from "./";
 import { isValidElement } from "react";
-import { Image } from "@fluentui/react-components";
 
-const RenderString = ({ ClassNames }: Pick<SKey, "ClassNames">, String: string) =>
+const RenderString = (
+    { ClassNames }: Pick<SKey, "ClassNames">,
+    String: string): ReactElement | undefined =>
 {
     const fontSize: string = String.length > 1
         ? "1rem"
         : "1.25rem";
 
     return (
-        <div className={ ClassNames?.StringContainer } key={ Math.random().toString() } style={ {fontSize} }>
+        <div
+            className={ ClassNames?.StringContainer }
+            key={ Math.random().toString() }
+            style={ { fontSize } }>
             { String }
         </div>
     );
 };
 
-export const RenderKey = ({ ClassNames, Representation, style }: SKey): ReactElement =>
+export const RenderKey = ({
+    BackgroundColor,
+    ClassNames,
+    Color,
+    CornerDirection,
+    Representation,
+    style }: SKey): ReactElement =>
 {
-    return (
-        <div className={ ClassNames?.Root } { ...{style } }>
+    const OutRep: Array<FKeyRepresentation> = [ ...Representation ];
+    console.log(`OutRep is`, OutRep);
+    let DirectionText: "L" | "R" | undefined = undefined;
+    if (CornerDirection && (OutRep.length > 1 || (typeof OutRep[0] === "string" && OutRep[0].length > 1)))
+    {
+        const DirectionKeyNotSplit = (): string | undefined =>
+        {
+            return OutRep.find((Element: FKeyRepresentation): boolean =>
             {
-                Representation.map((Element: FKeyRepresentation): ReactElement =>
+                if (typeof Element === "string")
+                {
+                    return Element.startsWith("L") || Element.startsWith("R");
+                }
+                else
+                {
+                    return false;
+                }
+            }) as string | undefined;
+        };
+
+        while (DirectionKeyNotSplit() !== undefined)
+        {
+            const KeyWithDirection: string = DirectionKeyNotSplit() as string;
+            const Index: number = OutRep.indexOf(KeyWithDirection);
+            if (Index !== -1)
+            {
+                DirectionText = KeyWithDirection[0] as "L" | "R";
+                console.log(`Found Direction ${DirectionText} on key ${KeyWithDirection}.`);
+                if (KeyWithDirection.length === 1)
+                {
+                    console.log(`Length was 1 for Rep`, Representation);
+                    OutRep.splice(Index, 1);
+                }
+                else
+                {
+                    const KeyWithoutDirection: string = KeyWithDirection.slice(2);
+                    OutRep[Index] = KeyWithoutDirection;
+                }
+            }
+        }
+    }
+
+    console.log("Transformed OutRep", OutRep);
+    
+    style = style || { };
+
+    if (style.color === undefined)
+    {
+        style.color = Color;
+    }
+
+    if (style.backgroundColor === undefined)
+    {
+        style.backgroundColor = BackgroundColor;
+    }
+
+    return (
+        <span
+            className={ ClassNames?.Root }
+            { ...{ style } }>
+            {
+                OutRep.map((Element: FKeyRepresentation): ReactElement | undefined =>
                 {
                     let ReturnElement: ReactElement | undefined = undefined;
                     if (isValidElement(Element))
@@ -36,19 +104,43 @@ export const RenderKey = ({ ClassNames, Representation, style }: SKey): ReactEle
                     }
                     else if (typeof Element === "string")
                     {
-                        if (Element.startsWith("data:"))
-                        {
-                            ReturnElement = <Image key={ Math.random().toString() } src={ Element }/>;
-                        }
-                        else
-                        {
-                            ReturnElement = RenderString({ ClassNames }, Element);
-                        }
+                        ReturnElement = RenderString({ ClassNames }, Element);
+
+                        // if (Element.startsWith("data:"))
+                        // {
+                        //     ReturnElement =
+                        //         <Image
+                        //             key={ Math.random().toString() }
+                        //             src={ Element }
+                        //         />;
+                        // }
+                        // else
+                        // {
+                        //     ReturnElement = RenderString({ ClassNames }, Element);
+                        // }
                     }
 
-                    return ReturnElement || <div></div>;
+                    return ReturnElement;
                 })
             }
-        </div>
+            {
+                ((): ReactElement | undefined =>
+                {
+                    if (DirectionText)
+                    {
+                        console.log(`Rendering Corner Text ${DirectionText}`);
+                        return (
+                            <div
+                                key={ Math.random().toString() }
+                                style={ { position: "absolute", bottom: 0, left: "3px", fontSize: "0.667rem", color: "#FFFFFF" } }>
+                                { DirectionText }
+                            </div>
+                        );
+                    }
+
+                    return undefined;
+                })()
+            }
+        </span>
     );
 };

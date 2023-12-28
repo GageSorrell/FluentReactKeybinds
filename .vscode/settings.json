@@ -4,7 +4,9 @@
         "camelcase",
         "fluentui",
         "Injective",
+        "keybind",
         "Segoe",
-        "Spacebar"
+        "Spacebar",
+        "usehooks"
     ]
 }

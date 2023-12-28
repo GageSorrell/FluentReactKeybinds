@@ -1,4 +1,4 @@
-/* File:      UseKeySequenceRecorder.ts
+/* File:      UseKeybindDialog.ts
  * Author:    Gage Sorrell <gsorrell@purdue.edu>
  * Copyright: (c) 2023 Gage Sorrell
  * License:   MIT
@@ -6,8 +6,8 @@
 
 import {
     type FKeySequence,
-    type PKeySequenceRecorder,
-    type SKeySequenceRecorder } from "./";
+    type PKeybindDialog,
+    type SKeybindDialog } from ".";
 import { type FocusEvent, type KeyboardEvent, useState } from "react";
 import { SetsEqual, type TStateUnstyled } from "../../Utility";
 import { type FDomKeyCode } from "../Key";
@@ -84,8 +84,8 @@ const MakeSequenceOrdered = (Sequence: FKeySequence): FKeySequence =>
     return OrderedMods.concat(SequenceSansMods);
 };
 
-export const UseKeySequenceRecorder =
-    ({ CornerDirection, OnChange }: PKeySequenceRecorder): TStateUnstyled<SKeySequenceRecorder> =>
+export const UseKeybindDialog =
+    ({ CornerDirection, OnChange }: PKeybindDialog): TStateUnstyled<SKeybindDialog> =>
 {
     const [ Keys, SetKeys ] = useState<Array<FDomKeyCode>>([ ]);
 
