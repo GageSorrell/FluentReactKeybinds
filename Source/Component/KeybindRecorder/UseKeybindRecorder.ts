@@ -1,4 +1,4 @@
-/* File:      UseKeySequenceRecorder.ts
+/* File:      UseKeybindRecorder.ts
  * Author:    Gage Sorrell <gsorrell@purdue.edu>
  * Copyright: (c) 2023 Gage Sorrell
  * License:   MIT
@@ -6,14 +6,18 @@
 
 import {
     type FKeySequence,
-    type PKeySequenceRecorder,
-    type SKeySequenceRecorder } from "./";
-import { type FocusEvent, type KeyboardEvent, useState } from "react";
+    type PKeybindRecorder,
+    type SKeybindRecorder } from ".";
+import {
+    type FocusEvent,
+    type KeyboardEvent,
+    useEffect,
+    useState } from "react";
 import { SetsEqual, type TStateUnstyled } from "../../Utility";
-import { type FDomKeyCode } from "../Key";
+import { type FDomKey } from "../Key";
 
 /** The order in which modifier keys should be shown. */
-const Order: Array<FDomKeyCode> =
+const Order: Array<FDomKey> =
 [
     "ControlLeft",
     "ControlRight",
@@ -29,7 +33,7 @@ const Order: Array<FDomKeyCode> =
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 const AreKeysOrdered = (Sequence: FKeySequence): boolean =>
 {
-    const IndexMap: Array<number> = Order.map((ModKey: FDomKeyCode): number =>
+    const IndexMap: Array<number> = Order.map((ModKey: FDomKey): number =>
     {
         return Sequence.indexOf(ModKey);
     })
@@ -53,7 +57,7 @@ const MakeSequenceOrdered = (Sequence: FKeySequence): FKeySequence =>
 {
     const SequenceSansMods: FKeySequence = [ ];
     const SequenceMods: FKeySequence = [ ];
-    Sequence.forEach((Key: FDomKeyCode): void =>
+    Sequence.forEach((Key: FDomKey): void =>
     {
         if (Order.includes(Key))
         {
@@ -65,9 +69,9 @@ const MakeSequenceOrdered = (Sequence: FKeySequence): FKeySequence =>
         }
     });
 
-    const OrderedMods: Array<FDomKeyCode> = [ ...Order ];
-    const UnusedMods: Array<FDomKeyCode> = [ ];
-    OrderedMods.forEach((Mod: FDomKeyCode) =>
+    const OrderedMods: Array<FDomKey> = [ ...Order ];
+    const UnusedMods: Array<FDomKey> = [ ];
+    OrderedMods.forEach((Mod: FDomKey) =>
     {
         if (!SequenceMods.includes(Mod))
         {
@@ -84,10 +88,16 @@ const MakeSequenceOrdered = (Sequence: FKeySequence): FKeySequence =>
     return OrderedMods.concat(SequenceSansMods);
 };
 
-export const UseKeySequenceRecorder =
-    ({ CornerDirection, OnChange }: PKeySequenceRecorder): TStateUnstyled<SKeySequenceRecorder> =>
+export const UseKeybindRecorder =
+    ({
+        CornerDirection,
+        ExclusionList,
+        MaxLength,
+        OnChange,
+        OnExcludedKeyPressed
+    }: PKeybindRecorder): TStateUnstyled<SKeybindRecorder> =>
 {
-    const [ Keys, SetKeys ] = useState<Array<FDomKeyCode>>([ ]);
+    const [ Keys, SetKeys ] = useState<Array<FDomKey>>([ ]);
 
     /* We use KeysUnpressed to learn when the user has taken all fingers *
      * off of the keyboard, then starts recording a new keybind.         */
@@ -97,12 +107,22 @@ export const UseKeySequenceRecorder =
     {
         Event.preventDefault();
 
+        const KeyCode: FDomKey = Event.code as FDomKey;
+        if  (ExclusionList && ExclusionList.includes(KeyCode))
+        {
+            OnExcludedKeyPressed?.(KeyCode);
+            return;
+        }
+
+        if (Keys.length === MaxLength)
+        {
+            return;
+        }
+
         SetKeys(Old =>
         {
-            const KeyCode: FDomKeyCode = Event.code as FDomKeyCode;
-
-            const DownSet: Set<FDomKeyCode> = new Set<FDomKeyCode>(Old);
-            const UpSet: Set<FDomKeyCode> = new Set<FDomKeyCode>(KeysUnpressed);
+            const DownSet: Set<FDomKey> = new Set<FDomKey>(Old);
+            const UpSet: Set<FDomKey> = new Set<FDomKey>(KeysUnpressed);
 
             const FingersLifted: boolean = SetsEqual(DownSet, UpSet) && KeysUnpressed.length > 0;
 
@@ -123,11 +143,16 @@ export const UseKeySequenceRecorder =
         });
     };
 
+    useEffect(() =>
+    {
+        OnChange?.(Keys);
+    }, [ Keys ]);
+
     const onKeyUp = (Event: KeyboardEvent<Element>) =>
     {
         // SetKeysUnpressed(Old =>
         // {
-        //     const KeyCode: FDomKeyCode = Event.code as FDomKeyCode;
+        //     const KeyCode: FDomKey = Event.code as FDomKey;
         //     if (KeyCode === Keys[Keys.length - 1] && Keys.length > 1)
         //     {
         //         SetKeys(OldKeys =>
@@ -143,7 +168,7 @@ export const UseKeySequenceRecorder =
         //         return [ ...Old, KeyCode ];
         //     }
         // });
-        SetKeysUnpressed(Old => [ ...Old, Event.code as FDomKeyCode ]);
+        SetKeysUnpressed(Old => [ ...Old, Event.code as FDomKey ]);
     };
 
     const onBlur = (_Event: FocusEvent) =>
@@ -155,7 +180,6 @@ export const UseKeySequenceRecorder =
     return {
         CornerDirection,
         Keys,
-        OnChange,
         onBlur,
         onKeyDown,
         onKeyUp

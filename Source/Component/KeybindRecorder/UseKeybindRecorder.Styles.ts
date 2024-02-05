@@ -1,4 +1,4 @@
-/* File:      UseKeySequenceRecorder.Styles.ts
+/* File:      UseKeybindRecorder.Styles.ts
  * Author:    Gage Sorrell <gsorrell@purdue.edu>
  * Copyright: (c) 2023 Gage Sorrell
  * License:   MIT
@@ -6,7 +6,7 @@
 
 import { type FRootStyles, type TStateUnstyled } from "../../Utility";
 import { makeStyles, shorthands } from "@fluentui/react-components";
-import { type SKeySequenceRecorder } from ".";
+import { type SKeybindRecorder } from ".";
 
 const UseStyles: FRootStyles = makeStyles({
     Root:
@@ -18,8 +18,8 @@ const UseStyles: FRootStyles = makeStyles({
     }
 });
 
-export const UseKeySequenceRecorderStyles =
-    (StateUnstyled: TStateUnstyled<SKeySequenceRecorder>): SKeySequenceRecorder =>
+export const UseKeybindRecorderStyles =
+    (StateUnstyled: TStateUnstyled<SKeybindRecorder>): SKeybindRecorder =>
 {
     return {
         ...StateUnstyled,

@@ -4,6 +4,7 @@
  * License:   MIT
  */
 
-export { Key } from "./Distribution/Component/Key/Key";
+export * from "./Distribution/Component/Key/index";
 export * from "./Distribution/Component/KeySequence/index";
-export * from "./Distribution/Component/KeySequenceRecorder/index";
+export * from "./Distribution/Component/KeybindDialog/index";
+export * from "./Distribution/Component/KeybindRecorder/index";

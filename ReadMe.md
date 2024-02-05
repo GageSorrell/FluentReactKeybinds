@@ -35,7 +35,7 @@ export const RecordKeybinds = ({ SetKeyboardShortcut }): ReactElement =>
         }
     };
 
-    return <KeySequenceRecorder { ...{ OnChange } }/>;
+    return <KeybindRecorder { ...{ OnChange } }/>;
 };
 ```
 

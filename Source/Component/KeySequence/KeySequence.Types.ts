@@ -4,12 +4,12 @@
  * License:   MIT
  */
 
-import { type FDomKeyCode, type PKey } from "../Key";
+import { type FDomKey, type PKey } from "../Key";
 import { type FStyledState } from "../../Utility";
 
 export type PKeySequence = Pick<PKey, "CornerDirection"> &
 {
-    Keys: Array<FDomKeyCode>;
+    Keys: Array<FDomKey>;
 };
 
 export type SKeySequence = PKeySequence & FStyledState;

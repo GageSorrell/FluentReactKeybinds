@@ -73,7 +73,7 @@ import {
     TextAsteriskFilled,
     TextAsteriskRegular } from "@fluentui/react-icons";
 import {
-    type FDomKeyCode,
+    type FDomKey,
     type FKeyRepresentation,
     type SKey } from "./Key.Types";
 import {
@@ -339,7 +339,7 @@ export const UseKey = ({ CornerDirection, Display, Key, style }: PKey): TStateUn
         Object.entries(VkToDom).forEach(([ InVk, InDomKey ]): void =>
         {
             const Vk: VK = InVk as VK;
-            const DomKey: FDomKeyCode = InDomKey as FDomKeyCode;
+            const DomKey: FDomKey = InDomKey as FDomKey;
 
             if (VkCode !== undefined)
             {
@@ -367,7 +367,7 @@ export const UseKey = ({ CornerDirection, Display, Key, style }: PKey): TStateUn
     else
     {
         console.log(`Getting inverse of ${Key}...`);
-        const InverseMap: Partial<Record<FDomKeyCode, VK>> = GetInverse(VkToDom);
+        const InverseMap: Partial<Record<FDomKey, VK>> = GetInverse(VkToDom);
         const Inverse: VK | undefined = InverseMap?.[Key];
         if (Inverse !== undefined)
         {

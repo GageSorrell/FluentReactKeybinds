@@ -6,4 +6,5 @@
 
 export * from "./Source/Component/Key";
 export * from "./Source/Component/KeySequence";
-export * from "./Source/Component/KeySequenceRecorder";
+export * from "./Source/Component/KeybindDialog";
+export * from "./Source/Component/KeybindRecorder";

@@ -38,7 +38,6 @@ export const RenderKey = ({
     style }: SKey): ReactElement =>
 {
     const OutRep: Array<FKeyRepresentation> = [ ...Representation ];
-    console.log(`OutRep is`, OutRep);
     let DirectionText: "L" | "R" | undefined = undefined;
     const ShouldFormatCorner: boolean | undefined = CornerDirection &&
         (
@@ -72,10 +71,8 @@ export const RenderKey = ({
             if (Index !== -1)
             {
                 DirectionText = KeyWithDirection[0] as "L" | "R";
-                console.log(`Found Direction ${DirectionText} on key ${KeyWithDirection}.`);
                 if (KeyWithDirection.length === 1)
                 {
-                    console.log(`Length was 1 for Rep`, Representation);
                     OutRep.splice(Index, 1);
                 }
                 else
@@ -87,8 +84,6 @@ export const RenderKey = ({
         }
     }
 
-    console.log("Transformed OutRep", OutRep);
-    
     style = style || { };
 
     if (style.color === undefined)
@@ -116,19 +111,6 @@ export const RenderKey = ({
                     else if (typeof Element === "string")
                     {
                         ReturnElement = RenderString({ ClassNames, Display }, Element);
-
-                        // if (Element.startsWith("data:"))
-                        // {
-                        //     ReturnElement =
-                        //         <Image
-                        //             key={ Math.random().toString() }
-                        //             src={ Element }
-                        //         />;
-                        // }
-                        // else
-                        // {
-                        //     ReturnElement = RenderString({ ClassNames }, Element);
-                        // }
                     }
 
                     return ReturnElement;
@@ -139,7 +121,6 @@ export const RenderKey = ({
                 {
                     if (DirectionText)
                     {
-                        console.log(`Rendering Corner Text ${DirectionText}`);
                         return (
                             <span
                                 key={ Math.random().toString() }

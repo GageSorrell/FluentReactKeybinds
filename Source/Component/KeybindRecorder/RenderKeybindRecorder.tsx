@@ -1,4 +1,4 @@
-/* File:      RenderKeySequenceRecorder.ts
+/* File:      RenderKeybindRecorder.ts
  * Author:    Gage Sorrell <gsorrell@purdue.edu>
  * Copyright: (c) 2023 Gage Sorrell
  * License:   MIT
@@ -6,9 +6,9 @@
 
 import { KeySequence } from "../KeySequence/KeySequence";
 import { type ReactElement } from "react";
-import { type SKeySequenceRecorder } from "./";
+import { type SKeybindRecorder } from ".";
 
-export const RenderKeySequenceRecorder =
+export const RenderKeybindRecorder =
     ({
         ClassNames,
         CornerDirection,
@@ -16,7 +16,7 @@ export const RenderKeySequenceRecorder =
         onBlur,
         onKeyDown,
         onKeyUp
-    }: SKeySequenceRecorder): ReactElement =>
+    }: SKeybindRecorder): ReactElement =>
 {
     return (
         <div

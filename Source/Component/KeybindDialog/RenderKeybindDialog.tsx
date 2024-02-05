@@ -15,36 +15,45 @@ import {
     DialogTrigger } from "@fluentui/react-components";
 import { type ReactElement } from "react";
 import { type SKeybindDialog } from ".";
+import { KeybindRecorder } from "../KeybindRecorder";
 
 export const RenderKeybindDialog =
     ({
+      Content,
+      Title,
+      OnCancel,
+      OnSave,
+      onOpenChange,
+      open
     }: SKeybindDialog): ReactElement =>
 {
     return (
-        <Dialog
-        // this controls the dialog open state
-        // open={open}
-        // onOpenChange={(event, data) => {
-        //   // it is the users responsibility to react accordingly to the open state change
-        //   setOpen(data.open);
-        // }}
-      >
-        <DialogSurface>
-          <DialogBody>
-            <DialogTitle>Dialog title</DialogTitle>
-            <DialogContent>
-                Foo bar
-            </DialogContent>
-
-            <DialogActions>
-              {/* DialogTrigger inside of a Dialog still works properly */}
-              <DialogTrigger disableButtonEnhancement>
-                <Button appearance="secondary">Close</Button>
-              </DialogTrigger>
-              <Button appearance="primary">Do Something</Button>
-            </DialogActions>
-          </DialogBody>
-        </DialogSurface>
+        <Dialog { ...{ open, onOpenChange } }>
+            <DialogSurface>
+                <DialogBody>
+                    <DialogTitle>
+                        { Title }
+                    </DialogTitle>
+                    <DialogContent>
+                        { Content }
+                        <KeybindRecorder/>
+                    </DialogContent>
+                    <DialogActions>
+                        <DialogTrigger disableButtonEnhancement>
+                            <Button
+                                appearance="secondary"
+                                onClick={ OnCancel }>
+                                Cancel
+                            </Button>
+                        </DialogTrigger>
+                        <Button
+                            appearance="primary"
+                            onClick={ OnSave }>
+                            Save
+                        </Button>
+                    </DialogActions>
+                </DialogBody>
+            </DialogSurface>
       </Dialog>
     );
 };

@@ -5,7 +5,7 @@
  */
 
 import { type CSSProperties, type ReactElement } from "react";
-import { type FDomKeyCode } from "../Key";
+import { type FDomKey } from "../Key";
 import { Key } from "../Key";
 import { type SKeySequence } from "./";
 
@@ -25,7 +25,7 @@ export const RenderKeySequence = ({
     return (
         <div className={ ClassNames?.Root }>
             {
-                (Keys || [ ]).map((PressedKey: FDomKeyCode, Index: number): ReactElement =>
+                (Keys || [ ]).map((PressedKey: FDomKey, Index: number): ReactElement =>
                 {
                     return <Key
                         { ...{ CornerDirection } }

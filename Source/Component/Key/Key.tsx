@@ -4,7 +4,11 @@
  * License:   MIT
  */
 
-import { type PKey, RenderKey, UseKey, UseKeyStyles } from "./";
+import {
+    type PKey,
+    RenderKey,
+    UseKey,
+    UseKeyStyles } from "./";
 import { ComponentFactory } from "../../Utility";
 import { ReactElement } from "react";
 
@@ -13,5 +17,10 @@ import { ReactElement } from "react";
  */
 export const Key = (Props: PKey): ReactElement =>
 {
-    return ComponentFactory.Full(Props, RenderKey, UseKey, UseKeyStyles);
+    return ComponentFactory.Full(
+        Props,
+        RenderKey,
+        UseKey,
+        UseKeyStyles
+    );
 };

@@ -5,7 +5,7 @@
  * License:   MIT
  */
 
-import { FDomKeyCode } from "../Component/Key/Key.Types";
+import { FDomKey } from "../Component/Key/Key.Types";
 
 export type FVkUnstyled =
     | "0"
@@ -301,7 +301,7 @@ export const Vk: { [ Key in VK ]: number } =
     Oem7: 0xDE
 } as const;
 
-export const VkToDom: { [ Index in VK ]: FDomKeyCode } =
+export const VkToDom: { [ Index in VK ]: FDomKey } =
 {
     BrowserBack: "BrowserBack",
     BrowserHome: "BrowserHome",

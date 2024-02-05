@@ -12,6 +12,11 @@ import {
 import { ComponentFactory } from "../../Utility";
 import { ReactElement } from "react";
 
+/** 
+ * A dialog that contains a KeybindRecorder.
+ * This should be sufficient for most cases in which
+ * you wish to have the user record a keybind.
+ */
 export const KeybindDialog = (Props: PKeybindDialog): ReactElement =>
 {
     return ComponentFactory.Full(

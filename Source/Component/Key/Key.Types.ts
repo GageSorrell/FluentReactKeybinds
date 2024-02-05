@@ -7,7 +7,12 @@
 import { FStylable, type FStyledState, type TStyles } from "../../Utility";
 import { ReactElement } from "react";
 
-export type FDomKeyCode =
+/**
+ * The set of values that KeyboardEvent#code can be.
+ * It is guaranteed that KeyboardEvent#code can be
+ * safely cast to `FDomKey`.
+ */
+export type FDomKey =
     | ""
     | "Escape"
     | "Digit1"
@@ -150,32 +155,63 @@ export type FDomKeyCode =
     | "MetaRight"
     | "MediaSelect";
 
+/**
+ * The display style of a Key component.
+ */
 export type FKeyDisplay =
-    | "Mini"
+    /** The default style. */
+    | "Full"
+    /**
+     * Similar to the <kbd> DOM element.
+     */
     | "Inline"
-    | "Full";
+    /**
+     * Like `Full`, but smaller.
+     * This is intended for displaying shortcuts
+     * that have already been set, rather than for
+     * recording new shortcuts.
+     */
+    | "Mini";
 
+/** Properties for the Key component. */
 export type PKey = FStylable &
 {
+    /** Override the background color. */
     BackgroundColor?: string;
+    /** Override the symbol color. */
     Color?: string;
+    /**
+     * For modifier keys, show the "L" or "R"
+     * in the lower-left corner, in a smaller
+     * size.
+     */
     CornerDirection?: boolean;
+    /** The display style of the Key. */
     Display?: FKeyDisplay;
-    Key: FDomKeyCode;
+    /** The value to display. */
+    Key: FDomKey;
 };
 
+/** The class names used to style the Key component. */
 export type FKeyClassNames =
     | "StringContainer"
     | "Root";
 
+/** The makeStyles hook of the Key component. */
 export type FKeyStyles = TStyles<FKeyClassNames>;
 
+/** `FDomKey`s are represented with strings and FluentIcons. */
 export type FKeyRepresentation = string | ReactElement;
 
+/** The state of the Key component. */
 export type SKey =
     FStylable &
     FStyledState &
-    Pick<PKey, "CornerDirection" | "Color" | "BackgroundColor" | "Display"> &
+    Pick<PKey,
+        | "BackgroundColor"
+        | "Color"
+        | "CornerDirection"
+        | "Display"> &
     {
         Representation: Array<FKeyRepresentation>;
     };
