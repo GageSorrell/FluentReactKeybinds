@@ -4,7 +4,7 @@
  * License:   MIT
  */
 
-export * from "./Source/Component/Key";
-export * from "./Source/Component/KeySequence";
-export * from "./Source/Component/KeybindDialog";
-export * from "./Source/Component/KeybindRecorder";
+export * from "./Distribution/Component/Key";
+export * from "./Distribution/Component/KeySequence";
+export * from "./Distribution/Component/KeybindDialog";
+export * from "./Distribution/Component/KeybindRecorder";

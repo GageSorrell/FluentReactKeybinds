@@ -3,26 +3,47 @@ import { defineConfig } from 'vitepress'
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
   title: "React Fluent Keybinds",
-  description: "Display key combinations consistent with Microsoft's Fluent UI, in React.",
+  description: "Display and record key combinations with Fluent UI-compatible components.",
   themeConfig: {
+    footer:
+    {
+      copyright: "&copy; 2024 Gage Sorrell.  Released under the MIT license."
+    },
     // https://vitepress.dev/reference/default-theme-config
     nav: [
       { text: 'Home', link: '/' },
       { text: 'Examples', link: '/markdown-examples' }
-    ],
-
+    ],    
     sidebar: [
       {
-        text: 'Examples',
+        text: 'Guides',
         items: [
-          { text: 'Markdown Examples', link: '/markdown-examples' },
-          { text: 'Runtime API Examples', link: '/api-examples' }
+          { text: 'Getting Started', link: '/guides/getting-started' },
+          { text: 'Using with Electron & Windows', link: '/guides/electron-windows-interop' },
+          { text: "Displaying Keybinds", link: "/guides/displaying-keybinds" },
+          { text: "Recording Keybinds", link: "/guides/recording-keybinds" },
+          { text: "Extending the Library", link: "/guides/extending-package" }
+        ]
+      },
+      {
+        text: 'Components',
+        items: [
+          { text: 'Key', link: '/components/key' },
+          { text: 'Keybind Sequence', link: '/components/keybind-sequence' },
+          { text: 'Keybind Recorder', link: '/components/keybind-recorder' },
+          { text: 'Keybind Dialog', link: '/components/keybind-dialog' }
+        ]
+      },
+      {
+        text: 'Support',
+        items: [
+          { text: 'Contact Information', link: '/support/contact-information' }
         ]
       }
     ],
 
     socialLinks: [
-      { icon: 'github', link: 'https://github.com/vuejs/vitepress' }
+      { icon: 'github', link: 'https://github.com/GageSorrell/ReactFluentKeybinds' }
     ]
   }
 })

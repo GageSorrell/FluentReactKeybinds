@@ -1,6 +1,6 @@
 {
-  "name": "fluent-react-keybind",
-  "version": "0.0.0",
+  "name": "react-fluent-keybinds",
+  "version": "0.0.2",
   "description": "Record and display keyboard sequences with Fluent UI for React.",
   "main": "index.js",
   "types": "index.d.ts",

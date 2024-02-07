@@ -4,13 +4,12 @@ layout: home
 
 hero:
   name: "React Fluent Keybinds"
-  text: "by Gage Sorrell"
-  tagline: Display key combinations in a way that is consistent with Microsoft's Fluent UI design language.
-  image: /Resources/ElectronLogo.svg
+  tagline: Display and record key combinations with Fluent UI-compatible components.
+  image: /Resources/Hero.png
   actions:
     - theme: brand
       text: Get Started
-      link: /get-started
+      link: /guides/getting-started
     - theme: alt
       text: Try It Out
       link: /try-it-out
