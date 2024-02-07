@@ -65,7 +65,7 @@ export const UseKeybindDialog =
         OnSave,
         Title,
         onOpenChange: onOpenChangeOut,
-        open,
-        setOpen
+        open//,
+        // setOpen
     };
 };

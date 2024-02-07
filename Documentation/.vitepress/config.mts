@@ -2,6 +2,7 @@ import { defineConfig } from 'vitepress'
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
+  head: [['link', { rel: 'icon', href: '/favicon.ico' }]],
   title: "React Fluent Keybinds",
   description: "Display and record key combinations with Fluent UI-compatible components.",
   themeConfig: {
@@ -11,13 +12,15 @@ export default defineConfig({
     },
     // https://vitepress.dev/reference/default-theme-config
     nav: [
-      { text: 'Home', link: '/' },
-      { text: 'Examples', link: '/markdown-examples' }
+      { text: 'Guides', link: '/guides/getting-started' },
+      { text: 'Documentation', link: '/components/' },
+      { text: 'Support', link: '/support/contact-information' }
     ],    
     sidebar: [
       {
         text: 'Guides',
         items: [
+          { text: 'Introduction', link: '/guides/introduction' },
           { text: 'Getting Started', link: '/guides/getting-started' },
           { text: 'Using with Electron & Windows', link: '/guides/electron-windows-interop' },
           { text: "Displaying Keybinds", link: "/guides/displaying-keybinds" },
@@ -37,11 +40,11 @@ export default defineConfig({
       {
         text: 'Support',
         items: [
-          { text: 'Contact Information', link: '/support/contact-information' }
+          { text: 'Contact Information', link: '/support/contact-information' },
+          { text: 'Showcase', link: '/support/showcase' },
         ]
       }
     ],
-
     socialLinks: [
       { icon: 'github', link: 'https://github.com/GageSorrell/ReactFluentKeybinds' }
     ]

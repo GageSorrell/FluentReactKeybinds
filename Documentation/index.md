@@ -11,8 +11,8 @@ hero:
       text: Get Started
       link: /guides/getting-started
     - theme: alt
-      text: Try It Out
-      link: /try-it-out
+      text: Learn More
+      link: /guides/introduction
 
 features:
   - icon:
