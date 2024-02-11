@@ -1,11 +1,23 @@
-import { defineConfig } from 'vitepress'
+import { defineConfig } from 'vitepress';
+import { tabsMarkdownPlugin } from "vitepress-plugin-tabs";
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
   head: [['link', { rel: 'icon', href: '/favicon.ico' }]],
-  title: "React Fluent Keybinds",
+  title: "⌨️ React Fluent Keybinds",
   description: "Display and record key combinations with Fluent UI-compatible components.",
+  markdown:
+  {
+    config: (md) =>
+    {
+      md.use(tabsMarkdownPlugin)
+    }
+  },
   themeConfig: {
+    search:
+    {
+      provider: "local"
+    },
     footer:
     {
       copyright: "&copy; 2024 Gage Sorrell.  Released under the MIT license."
@@ -22,6 +34,7 @@ export default defineConfig({
         items: [
           { text: 'Introduction', link: '/guides/introduction' },
           { text: 'Getting Started', link: '/guides/getting-started' },
+          { text: "Naming Conventions", link: "/guides/naming-conventions" },
           { text: 'Using with Electron & Windows', link: '/guides/electron-windows-interop' },
           { text: "Displaying Keybinds", link: "/guides/displaying-keybinds" },
           { text: "Recording Keybinds", link: "/guides/recording-keybinds" },
@@ -34,7 +47,8 @@ export default defineConfig({
           { text: 'Key', link: '/components/key' },
           { text: 'Keybind Sequence', link: '/components/keybind-sequence' },
           { text: 'Keybind Recorder', link: '/components/keybind-recorder' },
-          { text: 'Keybind Dialog', link: '/components/keybind-dialog' }
+          { text: 'Keybind Dialog', link: '/components/keybind-dialog' },
+          { text: 'Utility', link: '/components/utility' }
         ]
       },
       {
@@ -49,4 +63,4 @@ export default defineConfig({
       { icon: 'github', link: 'https://github.com/GageSorrell/ReactFluentKeybinds' }
     ]
   }
-})
+});

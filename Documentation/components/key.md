@@ -1,6 +1,14 @@
-[react-fluent-keybinds](../README.md) / [Exports](../modules.md) / Component/Key/Key.Types
+# Key
 
-# Module: Component/Key/Key.Types
+This component is analogous to the `<kbd>` HTML element, but with an API consistent with the other components in this package, and styled to look familiar in a Fluent UI React app.
+
+:::info Coming Soon
+Pictures
+:::
+
+:::info Coming Soon
+Examples
+:::
 
 ## Table of contents
 

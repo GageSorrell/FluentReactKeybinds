@@ -1,6 +1,14 @@
-[react-fluent-keybinds](../README.md) / [Exports](../modules.md) / Component/KeySequence/KeySequence.Types
+# Key Sequence
 
-# Module: Component/KeySequence/KeySequence.Types
+This component allows you to display a combination of keys to the user.
+
+:::info Coming Soon
+Pictures
+:::
+
+:::info Coming Soon
+Examples
+:::
 
 ## Table of contents
 

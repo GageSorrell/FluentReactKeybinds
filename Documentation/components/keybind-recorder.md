@@ -1,6 +1,14 @@
-[react-fluent-keybinds](../README.md) / [Exports](../modules.md) / Component/KeybindRecorder/KeybindRecorder.Types
+# Keybind Recorder
 
-# Module: Component/KeybindRecorder/KeybindRecorder.Types
+This component allows the user to record a keybind, for your app to save and use later in the user experience.
+
+:::info Coming Soon
+Pictures
+:::
+
+:::info Coming Soon
+Examples
+:::
 
 ## Table of contents
 
