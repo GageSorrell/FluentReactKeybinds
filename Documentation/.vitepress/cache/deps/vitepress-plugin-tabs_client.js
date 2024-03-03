@@ -5,8 +5,8 @@ import {
 import "./chunk-ZS7NZCD4.js";
 
 // ../node_modules/vitepress-plugin-tabs/src/client/index.ts
-import PluginTabs from "D:/FluentReactKeySequenceRecorder/node_modules/vitepress-plugin-tabs/src/client/PluginTabs.vue";
-import PluginTabsTab from "D:/FluentReactKeySequenceRecorder/node_modules/vitepress-plugin-tabs/src/client/PluginTabsTab.vue";
+import PluginTabs from "C:/Users/gage/FluentReactKeybinds/node_modules/vitepress-plugin-tabs/src/client/PluginTabs.vue";
+import PluginTabsTab from "C:/Users/gage/FluentReactKeybinds/node_modules/vitepress-plugin-tabs/src/client/PluginTabsTab.vue";
 
 // ../node_modules/vitepress-plugin-tabs/src/client/useTabsSelectedState.ts
 var injectionKey = "vitepress:tabSharedState";

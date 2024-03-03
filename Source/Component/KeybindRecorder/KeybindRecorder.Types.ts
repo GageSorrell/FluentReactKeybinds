@@ -11,18 +11,33 @@ import { type FStyledState } from "../../Utility";
 export type PKeybindRecorder =
     Pick<PKey, "CornerDirection"> &
     Partial<{
-        MaxLength?: number;
-        OnChange?: (Keys: Array<FDomKey>) => void;
-        OnExcludedKeyPressed?: (Key: FDomKey) => void;
-        ExclusionList?: Array<FDomKey>;
+        /** The sequence of `FDomKey`s that are being recorded. */
+        Sequence: FKeySequence;
+
+        /** The maximum length of the keybind that can be recorded. */
+        MaxLength: number;
+
+        /** Called when a key is recorded. */
+        OnChange: (Keys: FKeySequence) => void;
+
+        /**
+         * Called when an `FDomKey` is pressed that is in `ExclusionList`.
+         * It is guaranteed that this is never called when `OnChange` is called,
+         * and vice-versa.
+         */
+        OnExcludedKeyPressed: (Key: FDomKey) => void;
+
+        /** `FDomKey`s that are not accepted. */
+        ExclusionList: Array<FDomKey>;
     }>;
 
 export type FKeySequence = Array<FDomKey>;
 
-export type SKeybindRecorder = Pick<PKeybindRecorder, "CornerDirection"> & FStyledState &
-{
-    Keys: FKeySequence;
-    onBlur: (Event: FocusEvent) => void;
-    onKeyDown: (Event: KeyboardEvent) => void;
-    onKeyUp: (Event: KeyboardEvent) => void;
-};
+export type SKeybindRecorder =
+    PKeybindRecorder & 
+    FStyledState &
+    {
+        onBlur: (Event: FocusEvent) => void;
+        onKeyDown: (Event: KeyboardEvent) => void;
+        onKeyUp: (Event: KeyboardEvent) => void;
+    };

@@ -45,7 +45,7 @@ export default defineConfig({
         text: 'Components',
         items: [
           { text: 'Key', link: '/components/key' },
-          { text: 'Keybind Sequence', link: '/components/keybind-sequence' },
+          { text: 'Keybind Sequence', link: '/components/key-sequence' },
           { text: 'Keybind Recorder', link: '/components/keybind-recorder' },
           { text: 'Keybind Dialog', link: '/components/keybind-dialog' },
           { text: 'Utility', link: '/components/utility' }

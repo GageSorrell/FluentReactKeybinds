@@ -94,10 +94,11 @@ export const UseKeybindRecorder =
         ExclusionList,
         MaxLength,
         OnChange,
-        OnExcludedKeyPressed
+        OnExcludedKeyPressed,
+        Sequence
     }: PKeybindRecorder): TStateUnstyled<SKeybindRecorder> =>
 {
-    const [ Keys, SetKeys ] = useState<Array<FDomKey>>([ ]);
+    const [ Keys, SetKeys ] = useState<Array<FDomKey>>(Sequence ?? [ ]);
 
     /* We use KeysUnpressed to learn when the user has taken all fingers *
      * off of the keyboard, then starts recording a new keybind.         */
@@ -139,6 +140,9 @@ export const UseKeybindRecorder =
 
             const OrderedSequence: FKeySequence = MakeSequenceOrdered(NewSequence);
 
+            // @TODO Test this; the dev's implementation  
+            OnChange?.(OrderedSequence);
+
             return OrderedSequence;
         });
     };
@@ -179,7 +183,7 @@ export const UseKeybindRecorder =
 
     return {
         CornerDirection,
-        Keys,
+        Sequence,
         onBlur,
         onKeyDown,
         onKeyUp
