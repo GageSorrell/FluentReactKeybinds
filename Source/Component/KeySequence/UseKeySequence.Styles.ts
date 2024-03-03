@@ -12,6 +12,7 @@ const UseStyles: FRootStyles = makeStyles({
     Root:
     {
         ...shorthands.borderRadius(tokens.borderRadiusLarge),
+        ...shorthands.margin("1rem"),
         alignItems: "center",
         backgroundColor: tokens.colorNeutralBackground2,
         display: "flex",

@@ -10,8 +10,6 @@ Pictures
 Examples
 :::
 
-## Table of contents
-
 ### Type Aliases
 
 - [FDomKey](key.md#fdomkey)

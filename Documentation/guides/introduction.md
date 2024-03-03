@@ -9,7 +9,129 @@ The API surface is designed in a way that will make the developer feel "at home"
 
 ## Examples
 
-@TODO Pictures, a video
+<script setup>
+    import { useData } from "vitepress";
+    import { ref, onMounted, watch } from "vue";
+    import { createRoot } from "react-dom/client";
+    import { createElement, useState } from "react";
+    import { KeybindRecorder, KeySequence, KeybindDialog } from "../..";
+
+    const DialogExample = ref();
+    const RecorderExample = ref();
+    const SequenceExample = ref();
+
+    const Dark = useData().isDark;
+
+    import { Button, FluentProvider, webLightTheme, webDarkTheme } from "@fluentui/react-components";
+    const DialogComponent = (_Props) =>
+    {
+        let DarkMode = Dark.value;
+
+        const Title = "Example Dialog Component";
+        const Content = "This example dialog accepts a keybind, which is displayed below the triggering button once the keybind is saved."
+        const [ Sequence, SetSequence ] = useState([ ]);
+        const onSave = (NewSequence) =>
+        {
+            SetSequence(NewSequence);
+        };
+
+        const [ open, setOpen ] = useState(false);
+    
+        const Dialog = createElement(
+            KeybindDialog,
+            { ...{ onSave, Sequence, open, setOpen, Title, Content } },
+            null
+        );
+
+        const MySequence = createElement(KeySequence, { ...{ Sequence } });
+        const MyButton = createElement(
+            Button,
+            {
+                children: [ "Open Dialog" ],
+                style: { marginBottom: "1rem" },
+                onClick: () => { setOpen(true); } });
+        const Provider = createElement(FluentProvider,
+            {
+                theme: DarkMode ? webDarkTheme : webLightTheme
+            },
+            MyButton,
+            MySequence,
+            Dialog
+        );
+
+        return Provider;
+    };
+    const SequenceComponent = (_Props) =>
+    {
+        let DarkMode = Dark.value;
+    
+        const MySequence = createElement(KeySequence, { CornerDirection: true, Sequence: [ "MetaLeft", "ShiftRight", "Digit6" ] }, null);
+        const Provider = createElement(FluentProvider,
+            {
+                theme: DarkMode ? webDarkTheme : webLightTheme
+            },
+            MySequence
+        );
+
+        return Provider;
+    };
+
+
+    const RecorderComponent = (_Props) =>
+    {
+        const [ Sequence, SetSequence ] = useState(false);
+        const OnChange = (NewSequence) =>
+        {
+            SetSequence(_Old => NewSequence);
+        };
+
+        let DarkMode = Dark.value;
+    
+        const Recorder = createElement(
+            KeybindRecorder,
+            { ...{ OnChange, Sequence } },
+            null
+        );
+
+        const Provider = createElement(FluentProvider,
+            {
+                theme: DarkMode ? webDarkTheme : webLightTheme
+            },
+            Recorder
+        );
+
+        return Provider;
+    };
+
+    onMounted(() => {
+        const Roots = [ createRoot(SequenceExample.value), createRoot(RecorderExample.value), createRoot(DialogExample.value) ];
+        watch(Dark, (New, Old) =>
+        {
+            Roots[0].render(createElement(DialogComponent, {}, null));
+            Roots[1].render(createElement(RecorderComponent, {}, null));
+            Roots[2].render(createElement(SequenceComponent, {}, null));
+        });
+        Roots[0].render(createElement(DialogComponent, {}, null));
+        Roots[1].render(createElement(RecorderComponent, {}, null));
+        Roots[2].render(createElement(SequenceComponent, {}, null));
+    });
+</script>
+
+### Keybind Sequence
+
+<div ref="SequenceExample"/>
+
+### Keybind Recorder
+
+*For this example, please click the Recorder component to gain focus of it.
+Focus handling is provided by the `KeybindDialog` wrapper component.*
+
+<div ref="RecorderExample"/>
+
+### Keybind Dialog
+
+<div ref="DialogExample"/>
+
 
 ## Some Example Use Cases
 
