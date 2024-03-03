@@ -13,16 +13,20 @@ import {
     DialogSurface,
     DialogTitle,
     DialogTrigger } from "@fluentui/react-components";
+import { KeybindRecorder } from "../KeybindRecorder";
 import { type ReactElement } from "react";
 import { type SKeybindDialog } from ".";
-import { KeybindRecorder } from "../KeybindRecorder";
 
 export const RenderKeybindDialog =
     ({
       Content,
       Title,
+      OnBlur,
       OnCancel,
+      OnChange,
       OnSave,
+      SaveButtonRef,
+      Sequence,
       onOpenChange,
       open
     }: SKeybindDialog): ReactElement =>
@@ -36,13 +40,14 @@ export const RenderKeybindDialog =
                     </DialogTitle>
                     <DialogContent>
                         { Content }
-                        <KeybindRecorder/>
+                        <KeybindRecorder { ...{ OnBlur, OnChange, Sequence } }/>
                     </DialogContent>
                     <DialogActions>
                         <DialogTrigger disableButtonEnhancement>
                             <Button
                                 appearance="secondary"
-                                onClick={ OnCancel }>
+                                onClick={ OnCancel }
+                                ref={ SaveButtonRef }>
                                 Cancel
                             </Button>
                         </DialogTrigger>

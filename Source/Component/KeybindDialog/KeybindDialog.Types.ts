@@ -7,10 +7,10 @@
 import {
     type DialogOpenChangeData,
     type DialogOpenChangeEvent } from "@fluentui/react-components";
+import { type FDomKey, type PKey } from "../Key/Key.Types";
+import { type ReactElement, type RefObject} from "react";
 import { type FStyledState } from "../../Utility";
-import { type PKey } from "../Key/Key.Types";
 import { type PKeybindRecorder } from "../KeybindRecorder";
-import { type ReactElement } from "react";
 
 export type FKeybindDialogOpenData = DialogOpenChangeData &
 {
@@ -52,12 +52,12 @@ export type PKeybindDialog =
          */
         onOpenChange?: (Event: DialogOpenChangeEvent, Data: FKeybindDialogOpenData) => void;
 
-        onSave?: () => void;
+        onSave?: (NewSequence: Array<FDomKey>) => void;
 
         open: boolean;
 
         /** If defined, this is called by OnCancel and OnSave. */
-        setOpen?: (old: boolean) => boolean;
+        setOpen?: (Old: boolean) => void;
     };
 
 type FFluentDialogOpenChangeEventHandler =
@@ -75,5 +75,6 @@ export type SKeybindDialog =
     {
         OnCancel: () => void;
         OnSave: () => void;
+        SaveButtonRef: RefObject<HTMLButtonElement>;
     } &
     FStyledState;

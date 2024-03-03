@@ -95,10 +95,17 @@ export const UseKeybindRecorder =
         MaxLength,
         OnChange,
         OnExcludedKeyPressed,
-        Sequence
+        Sequence,
+        OnBlur
     }: PKeybindRecorder): TStateUnstyled<SKeybindRecorder> =>
 {
     const [ Keys, SetKeys ] = useState<Array<FDomKey>>(Sequence ?? [ ]);
+
+    /**
+     * Allows the Sequence to show an initial Sequence, perhaps the keybind
+     * that is currently saved in the app.
+     */
+    const [ IsPristine, SetIsPristine ] = useState<boolean>(true);
 
     /* We use KeysUnpressed to learn when the user has taken all fingers *
      * off of the keyboard, then starts recording a new keybind.         */
@@ -107,6 +114,12 @@ export const UseKeybindRecorder =
     const onKeyDown = (Event: KeyboardEvent<Element>) =>
     {
         Event.preventDefault();
+
+        if (IsPristine)
+        {
+            SetKeys(_Old => [ ]);
+            SetIsPristine(false);
+        }
 
         const KeyCode: FDomKey = Event.code as FDomKey;
         if  (ExclusionList && ExclusionList.includes(KeyCode))
@@ -140,9 +153,6 @@ export const UseKeybindRecorder =
 
             const OrderedSequence: FKeySequence = MakeSequenceOrdered(NewSequence);
 
-            // @TODO Test this; the dev's implementation  
-            OnChange?.(OrderedSequence);
-
             return OrderedSequence;
         });
     };
@@ -175,16 +185,29 @@ export const UseKeybindRecorder =
         SetKeysUnpressed(Old => [ ...Old, Event.code as FDomKey ]);
     };
 
-    const onBlur = (_Event: FocusEvent) =>
+    const ClearSequence = (): void =>
     {
         SetKeys(_Old => [ ]);
         SetKeysUnpressed(_Old => [ ]);
     };
 
+    const onBlurOut = (_Event: FocusEvent) =>
+    {
+        if (OnBlur === undefined)
+        {
+            ClearSequence();
+        }
+        else
+        {
+            OnBlur?.(_Event, ClearSequence); 
+        }
+    };
+
+
     return {
         CornerDirection,
         Sequence,
-        onBlur,
+        onBlur: onBlurOut,
         onKeyDown,
         onKeyUp
     };

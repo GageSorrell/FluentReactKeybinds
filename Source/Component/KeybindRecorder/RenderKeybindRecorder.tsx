@@ -12,7 +12,7 @@ export const RenderKeybindRecorder =
     ({
         ClassNames,
         CornerDirection,
-        Keys,
+        Sequence,
         onBlur,
         onKeyDown,
         onKeyUp
@@ -26,7 +26,7 @@ export const RenderKeybindRecorder =
             <KeySequence
                 { ...{
                     CornerDirection,
-                    Keys
+                    Sequence
                 } }
             />
         </div>

@@ -9,7 +9,7 @@ import { type FStyledState } from "../../Utility";
 
 export type PKeySequence = Pick<PKey, "CornerDirection"> &
 {
-    Keys: Array<FDomKey>;
+    Sequence: Array<FDomKey>;
 };
 
 export type SKeySequence = PKeySequence & FStyledState;

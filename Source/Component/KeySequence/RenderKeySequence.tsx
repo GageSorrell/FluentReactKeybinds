@@ -12,20 +12,20 @@ import { type SKeySequence } from "./";
 export const RenderKeySequence = ({
     ClassNames,
     CornerDirection,
-    Keys }: SKeySequence): ReactElement =>
+    Sequence }: SKeySequence): ReactElement =>
 {
     const GetStyle = (Index: number): CSSProperties =>
     {
         return {
             marginLeft: Index > 0 ? "0.25rem" : 0,
-            marginRight: Index < Keys.length - 1 ? "0.25rem" : 0
+            marginRight: Index < Sequence.length - 1 ? "0.25rem" : 0
         };
     };
 
     return (
         <div className={ ClassNames?.Root }>
             {
-                (Keys || [ ]).map((PressedKey: FDomKey, Index: number): ReactElement =>
+                (Sequence || [ ]).map((PressedKey: FDomKey, Index: number): ReactElement =>
                 {
                     return <Key
                         { ...{ CornerDirection } }
