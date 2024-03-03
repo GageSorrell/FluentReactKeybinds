@@ -2,3 +2,7 @@ Distribution
 node_modules
 .vitepress/dist
 .vitepress/cache
+
+# amplify
+.amplify
+amplifyconfiguration*

@@ -8,9 +8,9 @@
     "add-component": "ts-node ./Scripts/AddComponent.ts",
     "build": "tsc",
     "dev": "tsc -w",
-    "docs:dev": "vitepress dev",
-    "docs:build": "vitepress build",
-    "docs:preview": "vitepress preview"
+    "docs:dev": "vitepress dev Documentation",
+    "docs:build": "vitepress build Documentation",
+    "docs:preview": "vitepress preview Documentation"
   },
   "keywords": [
     "fluent",
@@ -28,14 +28,20 @@
   "dependencies": {
     "@fluentui/react-components": "^9.43.3",
     "@fluentui/react-icons": "^2.0.224",
+    "aws-amplify": "^6.0.18",
     "usehooks-ts": "^2.9.1"
   },
   "devDependencies": {
+    "@aws-amplify/backend": "^0.12.1",
+    "@aws-amplify/backend-cli": "^0.11.1",
     "@stylistic/eslint-plugin": "^1.5.1",
     "@types/node": "^20.10.5",
     "@typescript-eslint/eslint-plugin": "^6.15.0",
     "@typescript-eslint/parser": "^6.15.0",
     "@vitejs/plugin-vue-jsx": "^3.1.0",
+    "aws-cdk": "^2.131.0",
+    "aws-cdk-lib": "^2.131.0",
+    "constructs": "^10.3.0",
     "eslint": "^8.56.0",
     "eslint-plugin-react": "^7.33.2",
     "eslint-plugin-react-hooks": "^4.6.0",
