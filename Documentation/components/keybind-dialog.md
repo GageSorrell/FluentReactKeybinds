@@ -109,16 +109,16 @@ ReactDOM.render(
 
 ### Type Aliases
 
-- [FKeybindDialogOpenData](Component_KeybindDialog_KeybindDialog_Types.md#fkeybinddialogopendata)
-- [FKeybindOpenState](Component_KeybindDialog_KeybindDialog_Types.md#fkeybindopenstate)
-- [PKeybindDialog](Component_KeybindDialog_KeybindDialog_Types.md#pkeybinddialog)
-- [SKeybindDialog](Component_KeybindDialog_KeybindDialog_Types.md#skeybinddialog)
+- [FKeybindDialogOpenData](./keybind-dialog.html#fkeybinddialogopendata)
+- [FKeybindOpenState](./keybind-dialog.html#fkeybindopenstate)
+- [PKeybindDialog](./keybind-dialog.html#pkeybinddialog)
+- [SKeybindDialog](./keybind-dialog.html#skeybinddialog)
 
 ## Type Aliases
 
 ### FKeybindDialogOpenData
 
-Ƭ **FKeybindDialogOpenData**: `DialogOpenChangeData` & \{ `Type`: [`FKeybindOpenState`](Component_KeybindDialog_KeybindDialog_Types.md#fkeybindopenstate)  }
+Ƭ **FKeybindDialogOpenData**: `DialogOpenChangeData` & \{ `Type`: [`FKeybindOpenState`](./keybind-dialog.html#fkeybindopenstate)  }
 
 #### Defined in
 
@@ -140,7 +140,7 @@ ___
 
 ### PKeybindDialog
 
-Ƭ **PKeybindDialog**: `Pick`\<[`PKey`](Component_Key_Key_Types.md#pkey), ``"BackgroundColor"`` \| ``"CornerDirection"`` \| ``"Color"``\> & [`PKeybindRecorder`](Component_KeybindRecorder_KeybindRecorder_Types.md#pkeybindrecorder) & \{ `Content`: `string` \| `ReactElement` ; `Title`: `string` ; `onCancel?`: () => `void` ; `onOpenChange?`: (`Event`: `DialogOpenChangeEvent`, `Data`: [`FKeybindDialogOpenData`](Component_KeybindDialog_KeybindDialog_Types.md#fkeybinddialogopendata)) => `void` ; `onSave?`: (`NewSequence`: [`FDomKey`](Component_Key_Key_Types.md#fdomkey)[]) => `void` ; `open`: `boolean` ; `setOpen?`: (`Old`: `boolean`) => `void`  }
+Ƭ **PKeybindDialog**: `Pick`\<[`PKey`](key.html#pkey), ``"BackgroundColor"`` \| ``"CornerDirection"`` \| ``"Color"``\> & [`PKeybindRecorder`](./keybind-recorder.html#pkeybindrecorder) & \{ `Content`: `string` \| `ReactElement` ; `Title`: `string` ; `onCancel?`: () => `void` ; `onOpenChange?`: (`Event`: `DialogOpenChangeEvent`, `Data`: [`FKeybindDialogOpenData`](./keybind-dialog.html#fkeybinddialogopendata)) => `void` ; `onSave?`: (`NewSequence`: [`FDomKey`](key.html#fdomkey)[]) => `void` ; `open`: `boolean` ; `setOpen?`: (`Old`: `boolean`) => `void`  }
 
 #### Defined in
 
@@ -150,7 +150,7 @@ ___
 
 ### SKeybindDialog
 
-Ƭ **SKeybindDialog**: `Omit`\<[`PKeybindDialog`](Component_KeybindDialog_KeybindDialog_Types.md#pkeybinddialog), ``"MaxLength"`` \| ``"onOpenChange"`` \| ``"setOpen"``\> & `FFluentDialogOpenChangeEventHandler` & \{ `OnCancel`: () => `void` ; `OnSave`: () => `void` ; `SaveButtonRef`: `RefObject`\<`HTMLButtonElement`\>  } & [`FStyledState`](../interfaces/Utility_Utility_Types.FStyledState.md)
+Ƭ **SKeybindDialog**: `Omit`\<[`PKeybindDialog`](./keybind-dialog.html#pkeybinddialog), ``"MaxLength"`` \| ``"onOpenChange"`` \| ``"setOpen"``\> & `FFluentDialogOpenChangeEventHandler` & \{ `OnCancel`: () => `void` ; `OnSave`: () => `void` ; `SaveButtonRef`: `RefObject`\<`HTMLButtonElement`\>  } & [`FStyledState`](./utility.html)
 
 #### Defined in
 

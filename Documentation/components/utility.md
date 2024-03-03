@@ -6,23 +6,23 @@ This module contains some helpful types and factories.
 
 ### Interfaces
 
-- [FStyledState](../interfaces/Utility_Utility_Types.FStyledState.md)
+- [FStyledState](./utility.html)
 
 ### Type Aliases
 
-- [FComponentFactory](Utility_Utility_Types.md#fcomponentfactory)
-- [FRootStyles](Utility_Utility_Types.md#frootstyles)
-- [FStylable](Utility_Utility_Types.md#fstylable)
-- [PParentComponent](Utility_Utility_Types.md#pparentcomponent)
-- [TComplement](Utility_Utility_Types.md#tcomplement)
-- [TComponentRenderFunction](Utility_Utility_Types.md#tcomponentrenderfunction)
-- [TDefault](Utility_Utility_Types.md#tdefault)
-- [TPartialSubset](Utility_Utility_Types.md#tpartialsubset)
-- [TPartialSubsetFromKeys](Utility_Utility_Types.md#tpartialsubsetfromkeys)
-- [TRef](Utility_Utility_Types.md#tref)
-- [TStateUnstyled](Utility_Utility_Types.md#tstateunstyled)
-- [TStyledProps](Utility_Utility_Types.md#tstyledprops)
-- [TStyles](Utility_Utility_Types.md#tstyles)
+- [FComponentFactory](./utility.html#fcomponentfactory)
+- [FRootStyles](./utility.html#frootstyles)
+- [FStylable](./utility.html#fstylable)
+- [PParentComponent](./utility.html#pparentcomponent)
+- [TComplement](./utility.html#tcomplement)
+- [TComponentRenderFunction](./utility.html#tcomponentrenderfunction)
+- [TDefault](./utility.html#tdefault)
+- [TPartialSubset](./utility.html#tpartialsubset)
+- [TPartialSubsetFromKeys](./utility.html#tpartialsubsetfromkeys)
+- [TRef](./utility.html#tref)
+- [TStateUnstyled](./utility.html#tstateunstyled)
+- [TStyledProps](./utility.html#tstyledprops)
+- [TStyles](./utility.html#tstyles)
 
 ## Type Aliases
 
@@ -34,13 +34,13 @@ This module contains some helpful types and factories.
 
 | Name | Type |
 | :------ | :------ |
-| `Full` | \<PProps, SState\>(`Props`: `PProps`, `RenderFunction`: [`TComponentRenderFunction`](Utility_Utility_Types.md#tcomponentrenderfunction)\<`SState`\>, `UseStateFunction`: (`Props`: `PProps`) => [`TStateUnstyled`](Utility_Utility_Types.md#tstateunstyled)\<`SState`\>, `UseStylesFunction`: (`StateUnstyled`: [`TStateUnstyled`](Utility_Utility_Types.md#tstateunstyled)\<`SState`\>) => `SState`, `DisplayName?`: `string`) => `ReactElement` |
-| `NoProps` | \{ `Full`: \<SState\>(`RenderFunction`: [`TComponentRenderFunction`](Utility_Utility_Types.md#tcomponentrenderfunction)\<`SState`\>, `UseStateFunction`: () => [`TStateUnstyled`](Utility_Utility_Types.md#tstateunstyled)\<`SState`\>, `UseStylesFunction`: (`StateUnstyled`: [`TStateUnstyled`](Utility_Utility_Types.md#tstateunstyled)\<`SState`\>) => `SState`, `DisplayName?`: `string`) => `ReactElement` ; `Stateless`: (`RenderFunction`: [`TComponentRenderFunction`](Utility_Utility_Types.md#tcomponentrenderfunction)\<[`FStyledState`](../interfaces/Utility_Utility_Types.FStyledState.md)\>, `UseStylesFunction`: () => [`FStyledState`](../interfaces/Utility_Utility_Types.FStyledState.md), `DisplayName?`: `string`) => `ReactElement` ; `Unstyled`: \<SState\>(`RenderFunction`: [`TComponentRenderFunction`](Utility_Utility_Types.md#tcomponentrenderfunction)\<`SState`\>, `UseStateFunction`: () => `SState`, `DisplayName?`: `string`) => `ReactElement`  } |
-| `NoProps.Full` | \<SState\>(`RenderFunction`: [`TComponentRenderFunction`](Utility_Utility_Types.md#tcomponentrenderfunction)\<`SState`\>, `UseStateFunction`: () => [`TStateUnstyled`](Utility_Utility_Types.md#tstateunstyled)\<`SState`\>, `UseStylesFunction`: (`StateUnstyled`: [`TStateUnstyled`](Utility_Utility_Types.md#tstateunstyled)\<`SState`\>) => `SState`, `DisplayName?`: `string`) => `ReactElement` |
-| `NoProps.Stateless` | (`RenderFunction`: [`TComponentRenderFunction`](Utility_Utility_Types.md#tcomponentrenderfunction)\<[`FStyledState`](../interfaces/Utility_Utility_Types.FStyledState.md)\>, `UseStylesFunction`: () => [`FStyledState`](../interfaces/Utility_Utility_Types.FStyledState.md), `DisplayName?`: `string`) => `ReactElement` |
-| `NoProps.Unstyled` | \<SState\>(`RenderFunction`: [`TComponentRenderFunction`](Utility_Utility_Types.md#tcomponentrenderfunction)\<`SState`\>, `UseStateFunction`: () => `SState`, `DisplayName?`: `string`) => `ReactElement` |
-| `Stateless` | \<PProps\>(`Props`: `PProps`, `RenderFunction`: [`TComponentRenderFunction`](Utility_Utility_Types.md#tcomponentrenderfunction)\<[`TStyledProps`](Utility_Utility_Types.md#tstyledprops)\<`PProps`\>\>, `UseStylesFunction`: (`Props`: `PProps`) => [`TStyledProps`](Utility_Utility_Types.md#tstyledprops)\<`PProps`\>, `DisplayName?`: `string`) => `ReactElement` |
-| `Unstyled` | \<PProps, SState\>(`Props`: `PProps`, `RenderFunction`: [`TComponentRenderFunction`](Utility_Utility_Types.md#tcomponentrenderfunction)\<`SState`\>, `UseStateFunction`: (`Props`: `PProps`) => `SState`, `DisplayName?`: `string`) => `ReactElement` |
+| `Full` | \<PProps, SState\>(`Props`: `PProps`, `RenderFunction`: [`TComponentRenderFunction`](./utility.html#tcomponentrenderfunction)\<`SState`\>, `UseStateFunction`: (`Props`: `PProps`) => [`TStateUnstyled`](./utility.html#tstateunstyled)\<`SState`\>, `UseStylesFunction`: (`StateUnstyled`: [`TStateUnstyled`](./utility.html#tstateunstyled)\<`SState`\>) => `SState`, `DisplayName?`: `string`) => `ReactElement` |
+| `NoProps` | \{ `Full`: \<SState\>(`RenderFunction`: [`TComponentRenderFunction`](./utility.html#tcomponentrenderfunction)\<`SState`\>, `UseStateFunction`: () => [`TStateUnstyled`](./utility.html#tstateunstyled)\<`SState`\>, `UseStylesFunction`: (`StateUnstyled`: [`TStateUnstyled`](./utility.html#tstateunstyled)\<`SState`\>) => `SState`, `DisplayName?`: `string`) => `ReactElement` ; `Stateless`: (`RenderFunction`: [`TComponentRenderFunction`](./utility.html#tcomponentrenderfunction)\<[`FStyledState`](./utility.html)\>, `UseStylesFunction`: () => [`FStyledState`](./utility.html), `DisplayName?`: `string`) => `ReactElement` ; `Unstyled`: \<SState\>(`RenderFunction`: [`TComponentRenderFunction`](./utility.html#tcomponentrenderfunction)\<`SState`\>, `UseStateFunction`: () => `SState`, `DisplayName?`: `string`) => `ReactElement`  } |
+| `NoProps.Full` | \<SState\>(`RenderFunction`: [`TComponentRenderFunction`](./utility.html#tcomponentrenderfunction)\<`SState`\>, `UseStateFunction`: () => [`TStateUnstyled`](./utility.html#tstateunstyled)\<`SState`\>, `UseStylesFunction`: (`StateUnstyled`: [`TStateUnstyled`](./utility.html#tstateunstyled)\<`SState`\>) => `SState`, `DisplayName?`: `string`) => `ReactElement` |
+| `NoProps.Stateless` | (`RenderFunction`: [`TComponentRenderFunction`](./utility.html#tcomponentrenderfunction)\<[`FStyledState`](./utility.html)\>, `UseStylesFunction`: () => [`FStyledState`](./utility.html), `DisplayName?`: `string`) => `ReactElement` |
+| `NoProps.Unstyled` | \<SState\>(`RenderFunction`: [`TComponentRenderFunction`](./utility.html#tcomponentrenderfunction)\<`SState`\>, `UseStateFunction`: () => `SState`, `DisplayName?`: `string`) => `ReactElement` |
+| `Stateless` | \<PProps\>(`Props`: `PProps`, `RenderFunction`: [`TComponentRenderFunction`](./utility.html#tcomponentrenderfunction)\<[`TStyledProps`](./utility.html#tstyledprops)\<`PProps`\>\>, `UseStylesFunction`: (`Props`: `PProps`) => [`TStyledProps`](./utility.html#tstyledprops)\<`PProps`\>, `DisplayName?`: `string`) => `ReactElement` |
+| `Unstyled` | \<PProps, SState\>(`Props`: `PProps`, `RenderFunction`: [`TComponentRenderFunction`](./utility.html#tcomponentrenderfunction)\<`SState`\>, `UseStateFunction`: (`Props`: `PProps`) => `SState`, `DisplayName?`: `string`) => `ReactElement` |
 
 #### Defined in
 
@@ -88,7 +88,7 @@ ___
 
 ### PParentComponent
 
-Ƭ **PParentComponent**: [`FStyledState`](../interfaces/Utility_Utility_Types.FStyledState.md) & \{ `children?`: `ReactNode`  }
+Ƭ **PParentComponent**: [`FStyledState`](./utility.html) & \{ `children?`: `ReactNode`  }
 
 #### Defined in
 
@@ -228,7 +228,7 @@ ___
 
 ### TStateUnstyled
 
-Ƭ **TStateUnstyled**\<`SState`\>: `SState` extends [`FStyledState`](../interfaces/Utility_Utility_Types.FStyledState.md) ? [`TPartialSubset`](Utility_Utility_Types.md#tpartialsubset)\<`SState`, [`FStyledState`](../interfaces/Utility_Utility_Types.FStyledState.md)\> : `SState`
+Ƭ **TStateUnstyled**\<`SState`\>: `SState` extends [`FStyledState`](./utility.html) ? [`TPartialSubset`](./utility.html#tpartialsubset)\<`SState`, [`FStyledState`](./utility.html)\> : `SState`
 
 Sometimes the Props are the State, so we do not
 have a separate type.  Thus, we use a conditional type
@@ -249,7 +249,7 @@ ___
 
 ### TStyledProps
 
-Ƭ **TStyledProps**\<`PProps`\>: `PProps` & [`FStyledState`](../interfaces/Utility_Utility_Types.FStyledState.md)
+Ƭ **TStyledProps**\<`PProps`\>: `PProps` & [`FStyledState`](./utility.html)
 
 A type of state that is the Props, equipped with styling.
 

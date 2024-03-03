@@ -88,15 +88,15 @@ ReactDOM.render(
 
 ### Type Aliases
 
-- [FKeySequence](Component_KeybindRecorder_KeybindRecorder_Types.md#fkeysequence)
-- [PKeybindRecorder](Component_KeybindRecorder_KeybindRecorder_Types.md#pkeybindrecorder)
-- [SKeybindRecorder](Component_KeybindRecorder_KeybindRecorder_Types.md#skeybindrecorder)
+- [FKeySequence](keybind-recorder.html#fkeysequence)
+- [PKeybindRecorder](keybind-recorder.html#pkeybindrecorder)
+- [SKeybindRecorder](keybind-recorder.html#skeybindrecorder)
 
 ## Type Aliases
 
 ### FKeySequence
 
-Ƭ **FKeySequence**: [`FDomKey`](Component_Key_Key_Types.md#fdomkey)[]
+Ƭ **FKeySequence**: [`FDomKey`](key.html#fdomkey)[]
 
 #### Defined in
 
@@ -106,7 +106,7 @@ ___
 
 ### PKeybindRecorder
 
-Ƭ **PKeybindRecorder**: `Pick`\<[`PKey`](Component_Key_Key_Types.md#pkey), ``"CornerDirection"``\> & \{ `Sequence`: [`FKeySequence`](Component_KeybindRecorder_KeybindRecorder_Types.md#fkeysequence)  } & `Partial`\<\{ `ExclusionList`: [`FDomKey`](Component_Key_Key_Types.md#fdomkey)[] ; `MaxLength`: `number` ; `OnBlur`: (`Event`: `FocusEvent`, `ClearSequence`: () => `void`) => `void` ; `OnChange`: (`NewSequence`: [`FKeySequence`](Component_KeybindRecorder_KeybindRecorder_Types.md#fkeysequence)) => `void` ; `OnExcludedKeyPressed`: (`Key`: [`FDomKey`](Component_Key_Key_Types.md#fdomkey)) => `void`  }\>
+Ƭ **PKeybindRecorder**: `Pick`\<[`PKey`](key.html#pkey), ``"CornerDirection"``\> & \{ `Sequence`: [`FKeySequence`](keybind-recorder.html#fkeysequence)  } & `Partial`\<\{ `ExclusionList`: [`FDomKey`](key.html#fdomkey)[] ; `MaxLength`: `number` ; `OnBlur`: (`Event`: `FocusEvent`, `ClearSequence`: () => `void`) => `void` ; `OnChange`: (`NewSequence`: [`FKeySequence`](keybind-recorder.html#fkeysequence)) => `void` ; `OnExcludedKeyPressed`: (`Key`: [`FDomKey`](key.html#fdomkey)) => `void`  }\>
 
 #### Defined in
 
@@ -116,7 +116,7 @@ ___
 
 ### SKeybindRecorder
 
-Ƭ **SKeybindRecorder**: `Omit`\<[`PKeybindRecorder`](Component_KeybindRecorder_KeybindRecorder_Types.md#pkeybindrecorder), ``"OnChange"``\> & [`FStyledState`](../interfaces/Utility_Utility_Types.FStyledState.md) & \{ `onBlur`: (`Event`: `FocusEvent`) => `void` ; `onKeyDown`: (`Event`: `KeyboardEvent`) => `void` ; `onKeyUp`: (`Event`: `KeyboardEvent`) => `void`  }
+Ƭ **SKeybindRecorder**: `Omit`\<[`PKeybindRecorder`](keybind-recorder.html#pkeybindrecorder), ``"OnChange"``\> & [`FStyledState`](./utility.html) & \{ `onBlur`: (`Event`: `FocusEvent`) => `void` ; `onKeyDown`: (`Event`: `KeyboardEvent`) => `void` ; `onKeyUp`: (`Event`: `KeyboardEvent`) => `void`  }
 
 #### Defined in
 

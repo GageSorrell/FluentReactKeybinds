@@ -129,14 +129,14 @@ ReactDOM.render(
 
 ### Type Aliases
 
-- [PKeySequence](Component_KeySequence_KeySequence_Types.md#pkeysequence)
-- [SKeySequence](Component_KeySequence_KeySequence_Types.md#skeysequence)
+- [PKeySequence](./key-sequence.html#pkeysequence)
+- [SKeySequence](./key-sequence.html#skeysequence)
 
 ## Type Aliases
 
 ### PKeySequence
 
-Ƭ **PKeySequence**: `Pick`\<[`PKey`](Component_Key_Key_Types.md#pkey), ``"CornerDirection"``\> & \{ `Sequence`: [`FDomKey`](Component_Key_Key_Types.md#fdomkey)[]  }
+Ƭ **PKeySequence**: `Pick`\<[`PKey`](key.html#pkey), ``"CornerDirection"``\> & \{ `Sequence`: [`FDomKey`](key.html#fdomkey)[]  }
 
 #### Defined in
 
@@ -146,7 +146,7 @@ ___
 
 ### SKeySequence
 
-Ƭ **SKeySequence**: [`PKeySequence`](Component_KeySequence_KeySequence_Types.md#pkeysequence) & [`FStyledState`](../interfaces/Utility_Utility_Types.FStyledState.md)
+Ƭ **SKeySequence**: [`PKeySequence`](./key-sequence.html#pkeysequence) & [`FStyledState`](./utility.html)
 
 #### Defined in
 

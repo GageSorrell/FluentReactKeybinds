@@ -74,7 +74,7 @@ ___
 
 ### FKeyStyles
 
-Ƭ **FKeyStyles**: [`TStyles`](Utility_Utility_Types.md#tstyles)\<[`FKeyClassNames`](key.md#fkeyclassnames)\>
+Ƭ **FKeyStyles**: [`TStyles`](./utility.html#tstyles)\<[`FKeyClassNames`](key.md#fkeyclassnames)\>
 
 The makeStyles hook of the Key component.
 
@@ -86,7 +86,7 @@ ___
 
 ### PKey
 
-Ƭ **PKey**: [`FStylable`](Utility_Utility_Types.md#fstylable) & \{ `BackgroundColor?`: `string` ; `Color?`: `string` ; `CornerDirection?`: `boolean` ; `Display?`: [`FKeyDisplay`](key.md#fkeydisplay) ; `Key`: [`FDomKey`](key.md#fdomkey)  }
+Ƭ **PKey**: [`FStylable`](./utility.html#fstylable) & \{ `BackgroundColor?`: `string` ; `Color?`: `string` ; `CornerDirection?`: `boolean` ; `Display?`: [`FKeyDisplay`](key.md#fkeydisplay) ; `Key`: [`FDomKey`](key.md#fdomkey)  }
 
 Properties for the Key component.
 
@@ -98,7 +98,7 @@ ___
 
 ### SKey
 
-Ƭ **SKey**: [`FStylable`](Utility_Utility_Types.md#fstylable) & [`FStyledState`](../interfaces/Utility_Utility_Types.FStyledState.md) & `Pick`\<[`PKey`](key.md#pkey), ``"BackgroundColor"`` \| ``"Color"`` \| ``"CornerDirection"`` \| ``"Display"``\> & \{ `Representation`: [`FKeyRepresentation`](key.md#fkeyrepresentation)[]  }
+Ƭ **SKey**: [`FStylable`](./utility.html#fstylable) & [`FStyledState`](./utility.html) & `Pick`\<[`PKey`](key.md#pkey), ``"BackgroundColor"`` \| ``"Color"`` \| ``"CornerDirection"`` \| ``"Display"``\> & \{ `Representation`: [`FKeyRepresentation`](key.md#fkeyrepresentation)[]  }
 
 The state of the Key component.
 

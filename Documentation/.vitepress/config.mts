@@ -5,6 +5,13 @@ export default defineConfig({
   head: [['link', { rel: 'icon', href: '/favicon.ico' }]],
   title: "⌨️ React Fluent Keybinds",
   description: "Display and record key combinations with Fluent UI-compatible components.",
+  vite:
+  {
+    ssr:
+    {
+      noExternal: [ "@fluentui/react-icons", "@fluentui/react-components" ]
+    }
+  },
   markdown:
   {
     config: (md) =>
