@@ -110,7 +110,7 @@ const UseStylesInline: FKeyStyles = makeStyles({
 export const UseKeyStyles = (StateUnstyled: TStateUnstyled<SKey>): SKey =>
 {
     let { Display } = StateUnstyled;
-    console.log(Display);
+    // console.log(Display);
     Display = Display || "Full";
     const StyleMap: Map<FKeyDisplay, FKeyStyles> = new Map<FKeyDisplay, FKeyStyles>([
         [ "Full", UseStylesFull ],
@@ -118,7 +118,7 @@ export const UseKeyStyles = (StateUnstyled: TStateUnstyled<SKey>): SKey =>
         [ "Mini", UseStylesMini ]
     ]);
 
-    console.log(`Display is ${Display}`);
+    // console.log(`Display is ${Display}`);
 
     const Styles = MergeClassesDeepChecked<FKeyClassNames>(
         UseStylesCommon(),

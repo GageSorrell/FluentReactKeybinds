@@ -30,7 +30,7 @@ const AddComponent = async () =>
         "An argument for the path was not provided."
     );
 
-    console.log(__dirname);
+    // console.log(__dirname);
 
     const Path: string = process.argv[BaseNumberOfArgs];
 

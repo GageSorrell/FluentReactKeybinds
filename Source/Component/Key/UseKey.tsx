@@ -366,7 +366,7 @@ export const UseKey = ({ CornerDirection, Display, Key, style }: PKey): TStateUn
     }
     else
     {
-        console.log(`Getting inverse of ${Key}...`);
+        // console.log(`Getting inverse of ${Key}...`);
         const InverseMap: Partial<Record<FDomKey, VK>> = GetInverse(VkToDom);
         const Inverse: VK | undefined = InverseMap?.[Key];
         if (Inverse !== undefined)
